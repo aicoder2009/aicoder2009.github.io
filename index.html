@@ -483,26 +483,32 @@
 
 
     function sendSMS(messageBody) {
-      const accountSid = 'AC9577eec75abf5558561b6195bd6add94';
-      const authToken = '424412b787024b505738f6703a158d50';
-      const fromPhoneNumber = '+18336100199';
-      const toPhoneNumber = '+18643843747';
+        const AWS = require('aws-sdk');
+        const AWS_REGION = 'us-west-2';
+        const AWS_ACCESS_KEY_ID = 'YOUR_ACCESS_KEY_ID';
+        const AWS_SECRET_ACCESS_KEY = 'YOUR_SECRET_ACCESS_KEY';
+        const SNS_TOPIC_ARN = 'YOUR_SNS_TOPIC_ARN';
 
-      fetch(`https://api.twilio.com/2010-04-01/Accounts/${accountSid}/Messages.json`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Basic ${btoa(`${accountSid}:${authToken}`)}`,
-          'Content-Type': 'application/x-www-form-urlencoded'
-        },
-        body: new URLSearchParams({
-          From: fromPhoneNumber,
-          To: toPhoneNumber,
-          Body: messageBody
-        })
-      })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error('Error:', error));
+        AWS.config.update({
+            region: AWS_REGION,
+            accessKeyId: AWS_ACCESS_KEY_ID,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY
+        });
+
+        const sns = new AWS.SNS();
+
+        const params = {
+            Message: messageBody,
+            TopicArn: SNS_TOPIC_ARN
+        };
+
+        sns.publish(params, (err, data) => {
+            if (err) {
+                console.error('Error:', err);
+            } else {
+                console.log('Message sent successfully:', data.MessageId);
+            }
+        });
     }
 
   </script>
