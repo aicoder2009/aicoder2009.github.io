@@ -25,7 +25,7 @@
     </video>
   </div>
   <div style="position: absolute; width: 100%; top: 0; display: flex; justify-content: space-between; z-index: 2000; align-items: center; background-color: #00000030; color: #fff
-    ; margin: 0; pointer-events: none;">
+    ; margin: 0; backdrop-filter: blur(10px); pointer-events: none;">
     <p style="margin-left: 16px; font-weight: 600;">Lucky OS</p>
     <div style="display: flex; flex-direction: row; align-items: center;">
       <p onclick="toggleMusic()"
@@ -485,9 +485,9 @@
     function sendSMS(messageBody) {
         const AWS = require('aws-sdk');
         const AWS_REGION = 'us-west-1';
-        const AWS_ACCESS_KEY_ID = 'AKIA53N27LKX55D36J4Q';
-        const AWS_SECRET_ACCESS_KEY = '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';
-        const SNS_TOPIC_ARN = 'arn:aws:sns:us-west-1:952264252079:portfolio';
+        const AWS_ACCESS_KEY_ID = 'AKIA53N27LKX2RA4U5VV';
+        const AWS_SECRET_ACCESS_KEY = 'KBohMlhcEO0ddN5+tgU6xqLVLOFuR0BL92WWFEoI';
+        const PINPOINT_APPLICATION_ID = 'YOUR_PINPOINT_APPLICATION_ID';
 
         AWS.config.update({
             region: AWS_REGION,
@@ -495,18 +495,31 @@
             secretAccessKey: AWS_SECRET_ACCESS_KEY
         });
 
-        const sns = new AWS.SNS();
+        const pinpoint = new AWS.Pinpoint();
 
         const params = {
-            Message: messageBody,
-            TopicArn: SNS_TOPIC_ARN
+            ApplicationId: PINPOINT_APPLICATION_ID,
+            MessageRequest: {
+                Addresses: {
+                    'PHONE_NUMBER': {
+                        ChannelType: 'SMS'
+                    }
+                },
+                MessageConfiguration: {
+                    SMSMessage: {
+                        Body: messageBody,
+                        MessageType: 'TRANSACTIONAL',
+                        SenderId: 'SENDER_ID'
+                    }
+                }
+            }
         };
 
-        sns.publish(params, (err, data) => {
+        pinpoint.sendMessages(params, (err, data) => {
             if (err) {
                 console.error('Error:', err);
             } else {
-                console.log('Message sent successfully:', data.MessageId);
+                console.log('Message sent successfully:', data.MessageResponse.Result[0].DeliveryStatus);
             }
         });
     }
