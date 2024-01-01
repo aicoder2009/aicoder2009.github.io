@@ -437,8 +437,8 @@
         const currentDate = new Date();
         const targetDate = new Date("2009-03-02"); // Replace with your target date in the format "YYYY-MM-DD"
         const differenceMs = currentDate - targetDate;
-        const millisecondsPerYear = 365.25 * 24 * 60 * 60 * 1000;
-        const yearsWithDecimals = (differenceMs / millisecondsPerYear).toFixed(5);
+        //const millisecondsPerYear = 365.25 * 24 * 60 * 60 * 1000;
+        //const yearsWithDecimals = (differenceMs / millisecondsPerYear).toFixed(5);
         document.getElementById("age").textContent = yearsWithDecimals
         console.log("age here")
       }
