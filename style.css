@@ -1,10 +1,11 @@
 html {
   height: 100%;
   width: 100%;
+  font-family: OCR A Std, monospace;
 }
 
 
-.thomas_message {
+.karthick_message {
   background-color: #F6F6F6;
   padding: 12px;
   width: fit-content;
