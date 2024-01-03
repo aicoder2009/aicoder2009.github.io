@@ -5,7 +5,16 @@ html {
 * {
     font-family: OCR A Std, monospace;
 }
+a {
+  color: primary;
+  text-decoration: underline;
+  text-underline-position: under;
+}
 
+a:focus,
+a:hover {
+  text-decoration-style: wavy;
+}
 
 .karthick_message {
   background-color: #F6F6F6;
