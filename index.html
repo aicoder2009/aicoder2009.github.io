@@ -27,8 +27,8 @@
   </div>-->
   <div style="position: absolute; width: 100%; top: 0; display: flex; justify-content: space-between; z-index: 2000; align-items: center; background-color: #00000030; color: #fff
     ; margin: 0; background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(2px); pointer-events: none;">
-    <p style="margin-left: 16px; font-weight: 600; color: #000000;">KarthickOS</p>
-    <p style="background-color: rgba(255, 255, 255, 0.1); backdrop-filter: blur(75px); font-weight: 600; color: #cfb780; border-radius: 65px; height: 80%; width: 20%; align-content: center; align-items: center; vertical-align: middle; display: flex; justify-content: center; align-self: center;">⛅️ Always Happily Hacking 🧑🏾‍💻</p>
+    <p style="margin-left: 16px; font-weight: 600; color: #000000;background-color: rgba(255, 255, 255, 0.338); backdrop-filter: blur(75px);border-radius: 20px; padding: 8px;">KarthickOS</p>
+    <p style="background-color: rgba(255, 255, 255, 0.338); backdrop-filter: blur(75px); font-weight: 600; color: #cfb780; border-radius: 65px; height: 80%; width: 20%; align-content: center; align-items: center; vertical-align: middle; display: flex; justify-content: center; align-self: center; padding: 8px;">⛅️ Always Happily Hacking 🧑🏾‍💻</p>
     <div style="display: flex; flex-direction: row; align-items: center; color: #000000;">
       <!--<p style="pointer-events: auto; cursor: pointer; padding: 4px 12px; background-color: rgba(255, 255, 255, 0.1); pointer; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.0); border: 1px solid transparent; transition: box-shadow 0.3s ease; border-radius: 16px;" style="margin-left: 16px;> ⛅️ Always Happy Hacking</p>
         <p onclick="toggleMusic()"
@@ -37,7 +37,7 @@
         onmouseout="this.style.boxShadow = 'none'">
         Play Music
       </p>-->
-      <p id="time" style="margin-right: 16px; margin-left: 16px">Time</p>
+      <p id="time" style="margin-right: 16px; margin-left: 16px;background-color: rgba(255, 255, 255, 0.338); backdrop-filter: blur(75px);border-radius: 20px; padding: 8px;">Time</p>
     </div>
 
   </div>
@@ -317,7 +317,7 @@
         </br>
         I've neglected creating a personal website because I've found them to be mundane and self-obsessed. I am now
         meeting a lot of people, so I
-        developed KarthickOS to provide a snapshot of <i>"Who Karthick Is"</i> without feeling like an ad.
+        developed KarthickOS to provide a snapshot of "Who Karthick Is" without feeling like an ad.
         </br>
         </br>
         Explore the site to
@@ -499,31 +499,52 @@
 
 
     function sendSMS(messageBody) {
-      const fs = require('fs');
-      const toml = require('toml');
+        const AWS = require('aws-sdk');
+        const AWS_REGION = 'us-west-1';
+        const AWS_ACCESS_KEY_ID = '';
+        const AWS_SECRET_ACCESS_KEY = '';
+        const PINPOINT_APPLICATION_ID = 'YOUR_PINPOINT_APPLICATION_ID';
 
-      const config = toml.parse(fs.readFileSync('./config.toml', 'utf-8'));
+        AWS.config.update({
+            region: AWS_REGION,
+            accessKeyId: AWS_ACCESS_KEY_ID,
+            secretAccessKey: AWS_SECRET_ACCESS_KEY
+        });
 
-      const AWS = require('aws-sdk');
-      const region = 'us-west-1'; // Replace with your desired AWS region
-      const phoneNumber = '+3103408584'; // Replace with the destination phone number
+        const pinpoint = new AWS.Pinpoint();
 
-AWS.config.update({ region, accessKeyId: config.aws.accessKeyId, secretAccessKey: config.aws.secretAccessKey });
+        const params = {
+            ApplicationId: PINPOINT_APPLICATION_ID,
+            MessageRequest: {
+                Addresses: {
+                    'PHONE_NUMBER': {
+                        ChannelType: 'SMS'
+                    }
+                },
+                MessageConfiguration: {
+                    SMSMessage: {
+                        Body: messageBody,
+                        MessageType: 'TRANSACTIONAL',
+                        SenderId: 'SENDER_ID'
+                    }
+                }
+            }
+        };
 
-      const sns = new AWS.SNS();
-
-      const params = {
-        Message: messageBody,
-        PhoneNumber: phoneNumber
-      };
-
-      sns.publish(params, (err, data) => {
-        if (err) {
-          console.error('Error:', err);
-        } else {
-          console.log('Message sent successfully:', data);
-        }
-      });
+        pinpoint.sendMessages(params, (err, data) => {
+            if (err) {
+                console.error('Error:', err);
+            } else {
+                console.log('Message sent successfully:', data.MessageResponse.Result[0].DeliveryStatus);
+            }
+        });
     }
+
+  </script>
+  
 </body>
+
+<!--<footer>
+  <p>This was made from a <a href="https://jams.hackclub.com/batch/webOS">Hackclub tutorial</a>
+</footer>-->
 </html>
