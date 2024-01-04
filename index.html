@@ -63,16 +63,16 @@
     </div>
 
     <div id="projectsIcon" onclick="openIcon('projects')"
-      style="cursor: pointer; align-items: center; border-radius: 8px; width: fit-content; padding: 8px; display: flex; flex-direction: column;">
-      <img style="height: 64px; width: 64px;  border-radius: 16px; margin: 0px"
+      style="cursor: pointer; align-items: center; width: fit-content; padding: 8px; display: flex; flex-direction: column;">
+      <img style="height: 64px; width: 74px;  border-radius: 16px; margin: 0px"
         src="https://e2009.s3.us-west-1.amazonaws.com/fileicon.png" />
       <p style="margin: 0px; font-size: 12px; margin-top: 4px; font-weight: 500; color: #000000">Projects</p>
     </div>
     <div id="mapsIcon" onclick="openIcon('maps')"
       style="cursor: pointer; align-items: center; border-radius: 8px; width: fit-content; padding: 8px; display: flex; flex-direction: column;">
-      <!--<img style="height: 64px; width: 64px;  border-radius: 16px; margin: 0px"
+      <img style="height: 64px; width: 64px;  border-radius: 16px; margin: 0px"
         src="https://e2009.s3.us-west-1.amazonaws.com/icons+bg/Apple+Maps+Logo.png" />
-      <p style="margin: 0px; font-size: 12px; margin-top: 4px; font-weight: 500; color: #000000">Maps</p>-->
+      <p style="margin: 0px; font-size: 12px; margin-top: 4px; font-weight: 500; color: #000000">Maps</p>
     </div>
   </div>
   <!-- #start template -->
@@ -111,8 +111,8 @@
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 
     <script>
-      // Initialize the map
-      var map = L.map('map').fitWorld().zoomIn(1);
+      // Initialize the map with US view
+      var map = L.map('map').setView([37.0902, -95.7129], 4);
 
       // Add the tile layer
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -134,7 +134,7 @@
         var marker = L.marker([latitude, longitude], {icon: customIcon});
 
         // Create a custom popup
-        var popupContent = '<div style="text-align: center;">' +
+        var popupContent = '<div style="text-align: center;background-color: #f6f6f683;backdrop-filter: blur(15px);">' +
           '<img style="max-height: 126px; border-radius: 16px; object-fit: cover;" src="' + imageURL + '">' +
           `<p style="margin: 2px 0; text-align: left;">${caption}</p>` +
           '</div>';
@@ -145,9 +145,9 @@
         marker.addTo(map);
 
       }
-      createCustomMarker(34.9482, -81.9301, 'https://cloud-gelhtq1fq-hack-club-bot.vercel.app/0screenshot_2023-06-12_at_4.15.00_pm.png', 'Dieter, Parker, Tyler, and I organized Carolina Hacks, the first student-led Hackathon for high schoolers in South Carolina. We had a blast! <br/><br/>Checkout our <a href="https://drive.google.com/file/d/1gOpYcsQk7mf2ETHbtHarUdKUDJAMFL-w/view?usp=drive_link">Carolina Hacks Documentary</a>');
-      createCustomMarker(28.4595, 77.0266, 'https://cloud-6i5n6oo28-hack-club-bot.vercel.app/0screenshot_2023-06-13_at_10.33.44_am.png', 'Epoch was awesome! I met so many awesome people (including my team mates: Arpan and Vaishnavi). We built an AI-powered pickup line generator. <br/><br/>Epoch Documentary <a href="https://youtu.be/KLx4NZZPzMc">Epoch Documentary</a>');
-      createCustomMarker(42.3601, -71.0589, 'https://cloud-eakdz9j3y-hack-club-bot.vercel.app/0image.png', 'I really enjoyed Angel Hacks. At Angel Hacks, we built an AI college admissions simulator, funded by Elon Musk. It is free, but students give 10 % of lifetime income.It also costs the user $250, 000 for every student they accept <br/> <br/>Checkout the <a href="https://youtu.be/KLx4NZZPzMc"> Angel Hacks Documentary</a> ');
+      createCustomMarker(33.221099, -111.759581, 'https://e2009.s3.us-west-1.amazonaws.com/Untitled+Jan+04+2024.png', 'At my highschool, Basha High School, I was the one to initiate that our coding club being revived and become better than ever, and I signed our club up with the Hackclub Foundation and open up new opportunities to my club members <br/><br/>Checkout out our <a href="https://tinyurl.com/bashacodingclub">Basha Coding Club Website</a>');
+      //createCustomMarker(28.4595, 77.0266, 'https://cloud-6i5n6oo28-hack-club-bot.vercel.app/0screenshot_2023-06-13_at_10.33.44_am.png', 'Epoch was awesome! I met so many awesome people (including my team mates: Arpan and Vaishnavi). We built an AI-powered pickup line generator. <br/><br/>Epoch Documentary <a href="https://youtu.be/KLx4NZZPzMc">Epoch Documentary</a>');
+      //createCustomMarker(42.3601, -71.0589, 'https://cloud-eakdz9j3y-hack-club-bot.vercel.app/0image.png', 'I really enjoyed Angel Hacks. At Angel Hacks, we built an AI college admissions simulator, funded by Elon Musk. It is free, but students give 10 % of lifetime income.It also costs the user $250, 000 for every student they accept <br/> <br/>Checkout the <a href="https://youtu.be/KLx4NZZPzMc"> Angel Hacks Documentary</a> ');
 
       marker.addTo(map);
     </script>
@@ -243,6 +243,19 @@
                 title: "Project URL",
                 target: "_blank",
                 url: "https://teentalk.streamlit.app/"
+              }
+            ]
+          },
+          {
+            id: "WriteAway",
+            imgSrc: "https://aigenius.s3.amazonaws.com/Writeday-1.png",
+            title: "WriteAway",
+            description: "Another mini little HTML project i did one friday in 8th grade for fun + its completely ad free that helps you with writers block.",
+            links: [
+              {
+                title: "Project URL",
+                target: "_blank",
+                url: "https://e2009.s3.us-west-1.amazonaws.com/writeaway.html"
               }
             ]
           }
@@ -556,8 +569,4 @@
   </script>
   
 </body>
-
-<!--<footer>
-  <p>This was made from a <a href="https://jams.hackclub.com/batch/webOS">Hackclub tutorial</a>
-</footer>-->
 </html>
