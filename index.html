@@ -174,10 +174,10 @@
       <div
         style="flex-direction: row; align-items: center; margin-bottom: 16px; justify-content: space-between; display: flex;">
         <input type="text" id="messageInput" onchange="awaitingResponse = false"
-          style="padding: 6px 10px; width: calc(100%); border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; vertical-align: middle;" placeholder="Hello, this is..." />
+          style="padding: 6px 10px; width: calc(100%); border: 1px solid #ccc; border-radius: 4px; font-size: 14px; outline: none; vertical-align: middle;" />
         <div
           style="display: flex; align-items: center; justify-content: center; font-size: 14px; margin-left: 16px; outline: none;">
-          <p style="margin: 0; cursor: pointer; color: #CE41FF" onclick="sendMessage()">Send↩️</p>
+          <p style="margin: 0; cursor: pointer; color: #CE41FF" onclick="sendMessage()">Send</p>
 
         </div>
       </div>
@@ -508,7 +508,7 @@
       const region = 'us-west-1'; // Replace with your desired AWS region
       const phoneNumber = '+3103408584'; // Replace with the destination phone number
 
-      AWS.config.update({ region, accessKeyId: config.aws.accessKeyId, secretAccessKey: config.aws.secretAccessKey });
+AWS.config.update({ region, accessKeyId: config.aws.accessKeyId, secretAccessKey: config.aws.secretAccessKey });
 
       const sns = new AWS.SNS();
 
