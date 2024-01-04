@@ -6,14 +6,9 @@ html {
     font-family: OCR A Std, monospace;
 }
 a {
-  color: primary;
+  color: #009cdf;
   text-decoration: underline;
   text-underline-position: under;
-}
-
-a:focus,
-a:hover {
-  text-decoration-style: wavy;
 }
 
 .karthick_message {
