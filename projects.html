@@ -24,12 +24,34 @@
     .terminal-nav {
       padding: 3%;
     }
-    .about-me {
+    .projects {
       padding-left: 3%;
       padding-top: 0.5%;
       padding-bottom: 0.5% ;
       padding-right: 3%;
     }
+    .card {
+  perspective: 1000px;
+}
+
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
   </style>
   </head>
 <body>
@@ -48,9 +70,18 @@
       <div class="title">
        <h1 href="#"><!--<code>--><strong>My Projects</strong><!--</code>--></h1>
       </div>
-      <div class="about-me">
+      <div class="projects">
         <hr>
-        <!--Add projects here--> 
+        <div class="card">
+          <div class="card-inner">
+            <div class="card-front">
+              <h1>Test1</h1>
+            </div>
+            <div class="card-back">
+              <h1>Test2</h1>
+            </div>
+          </div>
+        </div>
       </div>
 </body>
 </html>
