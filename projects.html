@@ -24,41 +24,12 @@
     .terminal-nav {
       padding: 3%;
     }
-    .projects {
+    .content {
       padding-left: 3%;
       padding-top: 0.5%;
       padding-bottom: 0.5% ;
       padding-right: 3%;
     }
-    .card {
-  width: 535px;
-  height: 519px;
-  border-radius: 27px;
-  perspective: 1000px;
-}
-
-.card-inner {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  transition: transform 0.8s;
-  transform-style: preserve-3d;
-}
-
-.card:hover .card-inner {
-  transform: rotateY(180deg);
-}
-
-.card-front, .card-back {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  backface-visibility: hidden;
-}
-
-.card-back {
-  transform: rotateY(180deg);
-}
   </style>
   </head>
 <body>
@@ -77,16 +48,28 @@
       <div class="title">
        <h1 href="#"><!--<code>--><strong>My Projects</strong><!--</code>--></h1>
       </div>
-      <div class="projects">
+      <div class="content">
         <hr>
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <!-- Front content goes here -->
+        <div class="terminal-timeline">
+
+
+          <div class="terminal-card">
+            <header>TeenTalk</header>
+            <div>
+              TeenTalk is an AI bot that helps teenagers with their mental health, 
+              helping them prioritize and manage their mental health from the comfort 
+              of their computer or phone.
             </div>
-            <div class="card-back">
-              <!-- Back content goes here -->
+              <button class="btn btn-default btn-ghost" href="https://github.com/aicoder2009/teentalk">View Github Repo</button>
+              <button class="btn btn-primary btn-ghostt" href="https://teentalk.streamlit.app/">Open Project</button>
+          </div>
+          <div class="terminal-card">
+            <header>Late School Bus Tracker</header>
+            <div>
+              A mobile app to help districts track their buses and students on 
+              trasportation to school from school busses to accuratly mark attendance.
             </div>
+              <button class="btn btn-primary btn-ghostt" href="https://play.google.com/store/apps/details?id=appinventor.ai_karthickarun2009.e02298">Open Project</button>
           </div>
         </div>
       </div>
