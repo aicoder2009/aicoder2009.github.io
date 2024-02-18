@@ -54,6 +54,37 @@
           <p style="margin: 2px;">Hello World &#128075;, this is Karthick Arun, a 14 year old coder/developer from Arizona ,USA 🏜️ 🇺🇸. I love working with Artificial Intelligence and Machine Learning, 
             and I am an expert in the field. I love working with cool new innovation with AI and startups.</p>
           <br>
+          <h2><b>My Blog</b></h2>
+          <div id="blog-posts"></div>
+          <script>
+async function loadBlogPosts() {
+    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Example proxy
+    const feedUrl = 'http://aicoder2009.blogspot.com/feeds/posts/default?alt=rss';
+    try {
+        const response = await fetch(proxyUrl + feedUrl);
+        const data = await response.text();
+        const parser = new DOMParser();
+        const xmlDoc = parser.parseFromString(data, "text/xml");
+        const posts = xmlDoc.getElementsByTagName("item");
+        let htmlContent = '';
+        for (let i = 0; i < posts.length; i++) {
+            const title = posts[i].getElementsByTagName("title")[0].textContent;
+            const link = posts[i].getElementsByTagName("link")[0].textContent;
+            const description = posts[i].getElementsByTagName("description")[0].textContent;
+            htmlContent += `<div class="post">
+                                <h3><a href="${link}">${title}</a></h3>
+                                <p>${description}</p>
+                            </div>`;
+        }
+        document.getElementById('blog-posts').innerHTML = htmlContent;
+              } catch (error) {
+                    console.error('Error fetching or parsing blog posts:', error);
+              }
+          }
+
+          // Load blog posts when the page loads
+          window.onload = loadBlogPosts;
+          </script>
       </div>
 </body>
 </html>
