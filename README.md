@@ -1,5 +1,6 @@
 # 👋🏽 Welcome Wonderous Traveler to the  webpage for Aicoder2009!!
 Welcome to my portfolio! I'm passionate about web development and design. Here, you'll find information about my skills, projects, and more.
+Clearly if you have found this readme.md you are vary curious about Aicoder2009!, interesting.....
 
 ## Introduction
 
