@@ -23,6 +23,6 @@ I'm an AI enthusiast and developer and have exprieince in backend python and fro
 
 Feel free to reach out if you have any questions or want to collaborate!
 
-[Shoot me an email](karthick@aigenie.biz)
+[Shoot me an email](mailto:karthick@aigenie.biz)
 
 🚀 Happy coding!
