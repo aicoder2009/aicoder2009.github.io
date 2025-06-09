@@ -4,10 +4,10 @@ Clearly if you have found this readme.md you are vary curious about Aicoder2009!
 
 ## Introduction
 
-I'm an AI enthusiast and developer and have exprieince in backend python and front end javascript/HTML5/CSS3, and heres a bit about me:
+I'm an AI enthusiast and developer and have experience in backend Python and front-end JavaScript/HTML5/CSS3, and here's a bit about me:
 - I love coding 🧑🏾‍💻 (obviously)
-- My favorite IDE is VS Code!!
-- I love to work in projects with ai componenets
+- My favorite IDE is Cursor!!
+- I love to work on projects with AI components
 
 ## Skills
 
