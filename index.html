@@ -1,103 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="name" content="Karthick Arun - Aicoder2009">
-    <meta property="description" content="Karthick Arun's Dev Profile Coded with terminal.css styling on html & CSS with Github Copilot and ChatGPT.">
-    <meta property="og:title" content="Karthick Arun - Aicoder2009">
-    <meta property="og:image" content="https://e2009.s3.us-west-1.amazonaws.com/Untitled+Jan+08+2024.png">
-    <meta property="og:description" content="Karthick Arun's Dev Profile Coded with terminal.css styling on html & CSS with Github Copilot and ChatGPT.">
-    <meta property="link:card" content="https://e2009.s3.us-west-1.amazonaws.com/Untitled+Jan+08+2024.png">
-    <title>Karthick Arun - Aicoder2009</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="https://e2009.s3.us-west-1.amazonaws.com/pfp(SS)-2.png">
-    <link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.4/dist/terminal.min.css" />
-  <style>
-    .title { /* Title */
-      text-align: center;
-      align-items: center;
-      justify-content: center; /* Add this line to center horizontally */
-      margin: auto;
-      display: flex;
-      font-size: 20px;
-    }
-    .terminal-nav {
-      padding: 3%;
-    }
-    .content {
-      padding-left: 3%;
-      padding-top: 0.5%;
-      padding-bottom: 0.5% ;
-      padding-right: 3%;
-    }
-  </style>
-  </head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>karthick.me</title>
+</head>
 <body>
-    <div class="terminal-nav">
-        <div class="terminal-logo">
-          <div class="logo terminal-prompt"><a href="index.html" class="no-style">Karthick Arun</a></div>
-        </div>
-        <nav class="terminal-menu">
-          <ul>
-            <li><a class="menu-item active" href="#">Home</a></li>
-            <li><a class="menu-item" href="projects.html">Projects</a></li>
-            <li><a class="menu-item" href="contact.html">Contact</a></li>
-          </ul>
-        </nav>
-      </div>
-      <div class="title">
-       <h1 href="#"><!--<code>--><strong>Karthick Arun</strong><!--</code>--></h1>
-      </div>
-      <div class="content">
-        <hr>
-          <h2><b>About Me</b></h2>
-          <p style="margin: 2px;">Hello World &#128075;, this is Karthick Arun, a 14 year old coder/developer from Arizona ,USA 🏜️ 🇺🇸. I love working with Artificial Intelligence and Machine Learning, 
-            and I am an expert in the field. I love working with cool new innovation with AI and startups.</p>
-          <br>
-          <h2><b>Work Expirience</b></h2>
-          <div id="work-displaycase"></div>
-          <br>
-          <h2><b>Education</b></h2>
-          <div id="edu-displaycase"></div>
-          <br>
-          <h2><b>My Projects</b></h2>
-          <div id="projects-displaycase"></div>
-          <br>
-          <h2><b>Certifications</b></h2>
-          <div id="certifications-displaycase"></div>
-          <br>
-          <h2><b>My Blog</b></h2>
-          <div id="blog-posts-displaycase"></div>
-
-          <script>
-async function loadBlogPosts() {
-    const proxyUrl = 'https://cors-anywhere.herokuapp.com/'; // Example proxy
-    const feedUrl = 'http://aicoder2009.blogspot.com/feeds/posts/default?alt=rss';
-    try {
-        const response = await fetch(proxyUrl + feedUrl);
-        const data = await response.text();
-        const parser = new DOMParser();
-        const xmlDoc = parser.parseFromString(data, "text/xml");
-        const posts = xmlDoc.getElementsByTagName("item");
-        let htmlContent = '';
-        for (let i = 0; i < posts.length; i++) {
-            const title = posts[i].getElementsByTagName("title")[0].textContent;
-            const link = posts[i].getElementsByTagName("link")[0].textContent;
-            const description = posts[i].getElementsByTagName("description")[0].textContent;
-            htmlContent += `<div class="post">
-                                <h3><a href="${link}">${title}</a></h3>
-                                <p>${description}</p>
-                            </div>`;
-        }
-        document.getElementById('blog-posts').innerHTML = htmlContent;
-              } catch (error) {
-                    console.error('Error fetching or parsing blog posts:', error);
-              }
-          }
-
-          // Load blog posts when the page loads
-          window.onload = loadBlogPosts;
-          </script>
-      </div>
 </body>
 </html>
